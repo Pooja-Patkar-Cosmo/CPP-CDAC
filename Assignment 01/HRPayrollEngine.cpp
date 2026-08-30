@@ -17,7 +17,7 @@ private:
     static int employeeCount;
 
 public:
-    // Constructor initializes auto-increment ID and defaults
+   
     Employee() {
         empId = 1001 + employeeCount;
         employeeCount++;
@@ -28,7 +28,7 @@ public:
         isActive = true;
     }
 
-    // --- Setters with Validation ---
+    // Setters
 
     void setName(const string& n) {
         if (n.empty()) {
@@ -66,7 +66,7 @@ public:
         isActive = false;
     }
 
-    // --- Public Getters (const) ---
+    // Getters 
 
     int getEmpId() const { return empId; }
     string getName() const { return name; }
@@ -79,10 +79,10 @@ public:
 
     double computeAllowances() const {
         switch (grade) {
-            case 'A': return 0.40 * basicSalary; // Senior / Manager
-            case 'B': return 0.30 * basicSalary; // Mid-level
-            case 'C': return 0.20 * basicSalary; // Junior
-            case 'D': return 0.10 * basicSalary; // Trainee
+            case 'A': return 0.40 * basicSalary; 
+            case 'B': return 0.30 * basicSalary; 
+            case 'C': return 0.20 * basicSalary; 
+            case 'D': return 0.10 * basicSalary; 
             default: return 0.0;
         }
     }
@@ -141,8 +141,6 @@ public:
         return employeeCount;
     }
 
-    // --- Input Function ---
-
     void acceptDetails() {
         string inputName, inputDept;
         char inputGrade;
@@ -168,13 +166,10 @@ public:
     }
 };
 
-// Initialize static member variable
+// Initialized static member variable
 int Employee::employeeCount = 0;
 
-// --- Main Program matching the required structure ---
-
 int main() {
-    // Create objects — one on stack, two on heap
     Employee e1;
     Employee* e2 = new Employee();
     Employee* e3 = new Employee();
@@ -183,18 +178,10 @@ int main() {
     e2->acceptDetails();
     e3->acceptDetails();
 
-    // Try uncommenting — observe the compiler error, then explain in a comment why:
-    // e1.empId = 999; 
-    // e1.basicSalary = -1000;
-    // REASON FOR COMPILER ERROR:
-    // 'empId' and 'basicSalary' are declared as 'private' members inside the Employee class.
-    // In C++, private members cannot be directly accessed or modified from outside the class (such as in main()).
-
     e1.printPayslip();
     e2->printPayslip();
     e3->printPayslip();
 
-    // Simulate a resignation
     e3->deactivate();
     if (!e3->getIsActive()) {
         cout << endl << e3->getName() << " is no longer active. Payroll skipped." << endl;
