@@ -1,11 +1,14 @@
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
 struct Layout1 { char c1; int i; char c2; };
 struct Layout2 { int i; char c1; char c2; };
 
 int main() {
-    printf("sizeof(Layout1) = %zu\n", sizeof(struct Layout1));
-    printf("sizeof(Layout2) = %zu\n", sizeof(struct Layout2));
+
+    cout << "sizeof(Layout1)  =  " << sizeof(Layout1) << " Bytes" << endl;
+    cout << "sizeof(Layout2)  =  " << sizeof(Layout2) << " Bytes" << endl;
+    
     return 0;
 }
 
